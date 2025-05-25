@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vodripp - Viral Short Video Bundles</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #1f1c2c, #928dab); color: #fff; }
+    header { text-align: center; padding: 3rem 1rem; }
+    header h1 { font-size: 3rem; color: #00ffcc; }
+    header p { font-size: 1.2rem; margin-top: 0.5rem; color: #ddd; }
+
+    nav { margin-top: 1rem; }
+    nav button { background: #00ffcc; color: #000; border: none; padding: 0.5rem 1rem; margin: 0 0.5rem; cursor: pointer; border-radius: 8px; font-weight: bold; }
+
+    section { max-width: 900px; margin: 2rem auto; padding: 0 1.5rem; }
+    h2 { font-size: 2rem; margin-bottom: 1rem; border-bottom: 2px solid #00ffcc; padding-bottom: 0.5rem; }
+    ul { margin-bottom: 2rem; padding-left: 1.5rem; }
+    li { margin-bottom: 0.5rem; }
+
+    .pricing-container { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-top: 2rem; }
+    .card { background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 12px; width: 250px; text-align: center; transition: transform 0.3s; border: 1px solid #00ffcc; }
+    .card:hover { transform: translateY(-5px); background: rgba(0, 0, 0, 0.3); }
+    .card h3 { font-size: 1.4rem; margin-bottom: 0.5rem; color: #00ffcc; }
+    .card p { margin-bottom: 0.8rem; color: #eee; }
+    .card strong { font-size: 1.8rem; color: #fff; }
+
+    .btn { background: #00ffcc; color: #000; padding: 0.8rem 1.5rem; text-decoration: none; font-weight: bold; border-radius: 10px; display: inline-block; margin-top: 1rem; }
+    .center { text-align: center; margin-top: 2rem; }
+
+    footer { text-align: center; padding: 2rem; font-size: 0.9rem; color: #ccc; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Vodripp</h1>
+    <p id="subtitle">Massive Short Video Bundle - Viral Niches Collection</p>
+    <nav>
+      <button onclick="setLang('en')">English</button>
+      <button onclick="setLang('id')">Indonesia</button>
+    </nav>
+  </header>
+
+  <section>
+    <h2 id="why-title">Why Choose Vodripp?</h2>
+    <ul id="why-list">
+      <li>11,000+ viral short videos from 14 top-performing niches</li>
+      <li>No watermark, HD quality, and ready to post</li>
+      <li>Organized folders and lifetime access</li>
+      <li>Perfect for TikTok, Reels, Shorts & YouTube</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 id="price-title">Choose Your Package</h2>
+    <div class="pricing-container" id="pricing-cards"></div>
+  </section>
+
+  <section>
+    <h2 id="bonus-title">Bonus</h2>
+    <p class="center" id="bonus-detail">+400 Premium Blogger Templates (Free with any bundle)</p>
+  </section>
+
+  <div class="center">
+    <a class="btn" id="contact-btn" href="https://wa.me/6283133411449?text=Hi%20Vodripp,%20I'm%20interested%20in%20buying%20your%20video%20bundle!" target="_blank">Contact via WhatsApp</a>
+  </div>
+
+  <footer>
+    &copy; 2025 Vodripp. All rights reserved.
+  </footer>
+
+  <script>
+    const bundles = [
+      { items: 5, en: "$9", id: "Rp75.000" },
+      { items: 10, en: "$16", id: "Rp125.000" },
+      { items: "All (14 Niches)", en: "$29", id: "Rp200.000" }
+    ];
+
+    let currentLang = 'en';
+
+    function renderPricing() {
+      const container = document.getElementById("pricing-cards");
+      container.innerHTML = "";
+      bundles.forEach(pkg => {
+        const div = document.createElement("div");
+        div.className = "card";
+        div.innerHTML = `
+          <h3>${currentLang === 'en' ? `${pkg.items} Niches` : `${pkg.items} Niche`}</h3>
+          <p>${currentLang === 'en' ? "Lifetime Access" : "Akses Selamanya"}</p>
+          <strong>${currentLang === 'en' ? pkg.en : pkg.id}</strong>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function setLang(lang) {
+      currentLang = lang;
+      if (lang === 'id') {
+        document.getElementById('subtitle').textContent = "Bundle Video Pendek Viral dari Berbagai Niche";
+        document.getElementById('why-title').textContent = "Kenapa Harus Vodripp?";
+        document.getElementById('why-list').innerHTML = `
+          <li>11.000+ video pendek viral dari 14 niche terbaik</li>
+          <li>Tanpa watermark, kualitas HD, siap upload</li>
+          <li>Folder rapi, akses selamanya</li>
+          <li>Cocok untuk TikTok, Reels, Shorts & YouTube</li>
+        `;
+        document.getElementById('price-title').textContent = "Pilih Paket Anda";
+        document.getElementById('bonus-title').textContent = "Bonus";
+        document.getElementById('bonus-detail').textContent = "+400 Template Blogger Premium (Gratis setiap pembelian bundle)";
+        document.getElementById('contact-btn').textContent = "Hubungi via WhatsApp";
+        document.getElementById('contact-btn').href = "https://wa.me/6283133411449?text=Halo%20Vodripp,%20saya%20tertarik%20membeli%20video%20bundle%20Anda!";
+      } else {
+        document.getElementById('subtitle').textContent = "Massive Short Video Bundle - Viral Niches Collection";
+        document.getElementById('why-title').textContent = "Why Choose Vodripp?";
+        document.getElementById('why-list').innerHTML = `
+          <li>11,000+ viral short videos from 14 top-performing niches</li>
+          <li>No watermark, HD quality, and ready to post</li>
+          <li>Organized folders and lifetime access</li>
+          <li>Perfect for TikTok, Reels, Shorts & YouTube</li>
+        `;
+        document.getElementById('price-title').textContent = "Choose Your Package";
+        document.getElementById('bonus-title').textContent = "Bonus";
+        document.getElementById('bonus-detail').textContent = "+400 Premium Blogger Templates (Free with any bundle)";
+        document.getElementById('contact-btn').textContent = "Contact via WhatsApp";
+        document.getElementById('contact-btn').href = "https://wa.me/6283133411449?text=Hi%20Vodripp,%20I'm%20interested%20in%20buying%20your%20video%20bundle!";
+      }
+      renderPricing();
+    }
+
+    setLang('en');
+  </script>
+</body>
+</html>
